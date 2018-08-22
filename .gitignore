@@ -1,0 +1,5 @@
+.tox
+.pytest_cache
+htmlcov
+.coverage
+/coverage_report
