@@ -8,6 +8,7 @@ tox = "*"
 black = "*"
 isort = "*"
 "e1839a8" = {editable = true, path = ".", extras = ["test"]}
+"zest.releaser" = "*"
 
 [dev-packages]
 
