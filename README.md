@@ -1,5 +1,9 @@
 # django-alive 🕺
 
+[![tests](https://img.shields.io/travis/lincolnloop/django-alive/master.svg)](https://travis-ci.org/lincolnloop/django-alive)
+[![PyPI](https://img.shields.io/pypi/v/django-alive.svg)](https://pypi.org/project/django-alive/)
+![Python Versions](https://img.shields.io/pypi/pyversions/django-alive.svg)
+
 Provides two healthcheck endpoints for your Django application:
 
 **Alive**
