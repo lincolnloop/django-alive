@@ -10,14 +10,14 @@ from .. import checks
 
 class TestChecks(TestCase):
     def test_database(self):
-        checks.check_database()
+        self.assertIsNone(checks.check_database())
 
     def test_database_failed(self):
         with patch("django.db.connection.cursor", return_value=None):
             self.assertRaises(checks.HealthcheckFailure, checks.check_database)
 
     def test_staticfiles(self):
-        checks.check_staticfile("dummy.css")
+        self.assertIsNone(checks.check_staticfile("dummy.css"))
 
     def test_staticfiles_failed(self):
         self.assertRaises(
@@ -25,7 +25,7 @@ class TestChecks(TestCase):
         )
 
     def test_cache(self):
-        checks.check_cache()
+        self.assertIsNone(checks.check_cache())
 
     def test_cache_failed(self):
         def broken_get(*args, **kwargs):
