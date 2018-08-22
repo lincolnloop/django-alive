@@ -77,14 +77,14 @@ ALIVE_CHECKS = {
 
 `django-alive` is designed to easily extend with your own custom checks. Simply define a function which performs your check and raises a `django_alive.HealthcheckFailure` exception in the event of a failure. See [`checks.py`](https://github.com/lincolnloop/django-alive/blob/master/django_alive/checks.py) for some examples on how to write a check.
 
-## Bypassing the `ALLOWED_HOSTS` Check
+## Disabling `ALLOWED_HOSTS` for Healthchecks
 
 Often, load balancers will not pass a `Host` header when probing a healthcheck endpoint. This presents a problem for [Django's host header validation](https://docs.djangoproject.com/en/2.1/topics/security/#host-headers-virtual-hosting). A middleware is included that will turn off the host checking only for the healthcheck endpoints. This is safe since these views never do anything with the `Host` header.
 
-Enable the middleware by inserting this **at the beginning** of your `MIDDLEWARES`:
+Enable the middleware by inserting this **at the beginning** of your `MIDDLEWARE`:
 
 ```python
-MIDDLEWARES = [
+MIDDLEWARE = [
     "django_alive.middleware.healthcheck_bypass_host_check",
     # ...
 ]
