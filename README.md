@@ -1,13 +1,13 @@
 # django-alive 🕺
 
 [![tests](https://img.shields.io/travis/lincolnloop/django-alive/master.svg)](https://travis-ci.org/lincolnloop/django-alive)
-[![coverage](https://img.shields.io/codacy/coverage/5d539d4956a44f55aec632f3a43ee6c1/master.svg)](https://app.codacy.com/project/ipmb/django-alive/dashboard)
+[![coverage](https://img.shields.io/codacy/coverage/5d539d4956a44f55aec632f3a43ee6c1.svg)](https://app.codacy.com/project/ipmb/django-alive/dashboard)
 [![PyPI](https://img.shields.io/pypi/v/django-alive.svg)](https://pypi.org/project/django-alive/)
 ![Python Versions](https://img.shields.io/pypi/pyversions/django-alive.svg)
 
 Provides two healthcheck endpoints for your Django application:
 
-**Alive**
+### Alive
 
 Verifies the WSGI server is responding.
 
@@ -17,7 +17,7 @@ Verifies the WSGI server is responding.
     * content: `ok`
 * Failure: This view never returns a failure. A failure would mean your WSGI server is not running.
 
-**Health**
+### Health
 
 Verifies services are ready.
 
