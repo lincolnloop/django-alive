@@ -1,5 +1,6 @@
 from django.urls import reverse
 
+
 def healthcheck_bypass_host_check(get_response):
     healthcheck_urls = [reverse("alive_alive"), reverse("alive_health")]
 

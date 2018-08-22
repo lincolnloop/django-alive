@@ -1,8 +1,9 @@
 from django.core.exceptions import DisallowedHost
+from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
-from django.test import TestCase, RequestFactory, override_settings
 
 from ..middleware import healthcheck_bypass_host_check
+
 
 class MiddlewareTestCase(TestCase):
     def setUp(self):
@@ -19,6 +20,3 @@ class MiddlewareTestCase(TestCase):
         request = RequestFactory().get("/")
         request = self.middleware(request)
         self.assertRaises(DisallowedHost, request.get_host)
-
-
-

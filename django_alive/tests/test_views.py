@@ -1,13 +1,14 @@
 import json
-try:
-    from unittest.mock import patch
-except ImportError:
-    from mock import patch
 
 from django.test import TestCase
 from django.urls import reverse
 
 from .. import checks
+
+try:
+    from unittest.mock import patch
+except ImportError:
+    from mock import patch
 
 
 class ViewTestCase(TestCase):
