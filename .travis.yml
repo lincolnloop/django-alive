@@ -13,9 +13,10 @@ matrix:
       dist: xenial
       sudo: true
 
-install: pip install tox-travis coverage
+install: pip install tox-travis coverage codacy-coverage
 
 script: tox
 
 after_success:
   - coverage xml
+  - python-codacy-coverage -r coverage.xml
