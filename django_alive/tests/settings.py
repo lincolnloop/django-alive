@@ -2,7 +2,7 @@ import os
 
 try:
     from django.urls import include, re_path
-except:
+except ImportError:
     from django.conf.urls import include, url as re_path
 
 CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}

@@ -6,7 +6,7 @@ def healthcheck_bypass_host_check(get_response):
 
     def middleware(request):
         if request.path in healthcheck_urls:
-            request.get_host = lambda: request._get_raw_host()
+            request.get_host = request._get_raw_host
 
         return get_response(request)
 
