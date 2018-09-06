@@ -62,7 +62,7 @@ Use the `ALIVE_CHECKS` setting to configure the checks to include. It is a dicti
 ```python
 ALIVE_CHECKS = {
     "django_alive.checks.check_database": {},
-    "django_alive.checks.check_staticfiles": {
+    "django_alive.checks.check_staticfile": {
         "filename": "img/favicon.ico",
     },
     "django_alive.checks.check_cache": {
