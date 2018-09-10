@@ -14,7 +14,7 @@ def check_database(query="SELECT 1", database="default"):
         with connections[database].cursor() as cursor:
             cursor.execute(query)
     except Exception:
-        log.exception("{} database connection failed".format(database))
+        log.exception("%s database connection failed", database)
         raise HealthcheckFailure("database error")
 
 
@@ -29,5 +29,5 @@ def check_cache(key="django-alive", cache="default"):
     try:
         caches[cache].get(key)
     except Exception:
-        log.exception("{} cache connection failed".format(cache))
+        log.exception("%s cache connection failed", cache)
         raise HealthcheckFailure("cache error")
