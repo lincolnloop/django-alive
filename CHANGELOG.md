@@ -1,4 +1,4 @@
-1.0.1 (unreleased)
+1.0.1 (2018-09-10)
 ------------------
 
 * Documentation improvements
