@@ -89,3 +89,11 @@ MIDDLEWARE = [
     # ...
 ]
 ```
+
+## Handling `SECURE_SSL_REDIRECT`
+
+If your load balancer is doing HTTPS termination and you have `SECURE_SSL_REDIRECT=True` in your settings, you want to make sure that your healtcheck URLs are not also redirected to HTTPS. In that case, add the following to your settings:
+
+```python
+SECURE_REDIRECT_EXEMPT = [r"^-/"]  # django-alive URLs
+```
