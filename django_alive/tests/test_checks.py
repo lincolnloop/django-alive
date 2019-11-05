@@ -20,9 +20,8 @@ class TestChecks(TestCase):
         self.assertIsNone(checks.check_staticfile("dummy.css"))
 
     def test_staticfiles_failed(self):
-        self.assertRaises(
-            checks.HealthcheckFailure, checks.check_staticfile, ["does-not=exist.css"]
-        )
+        with self.assertRaises(checks.HealthcheckFailure):
+            checks.check_staticfile("does-not=exist.css")
 
     def test_cache(self):
         self.assertIsNone(checks.check_cache())
