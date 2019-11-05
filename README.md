@@ -69,6 +69,7 @@ ALIVE_CHECKS = {
         "cache": "session",
         "key": "test123",
     },
+    "django_migrations": {},
 }
 
 ```
