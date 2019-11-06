@@ -1,7 +1,8 @@
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+* Added `healthcheck` management command
+* Added optional `check_migrations` healthcheck
 
 
 1.0.1 (2018-09-10)

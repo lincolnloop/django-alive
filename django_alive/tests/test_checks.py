@@ -1,11 +1,12 @@
+from django.test import TestCase
+from django.utils.module_loading import import_string
+
+from .. import checks
+
 try:
     from unittest.mock import patch
 except ImportError:
     from mock import patch
-
-from django.test import TestCase
-
-from .. import checks
 
 
 class TestChecks(TestCase):

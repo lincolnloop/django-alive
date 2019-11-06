@@ -53,6 +53,9 @@ For versions before Django 2.0, use:
 url(r"-/", include("django_alive.urls"))
 ```
 
+If you wish to use the `healthcheck` [management command](#management-command), add
+`django_alive` to the `INSTALLED_APPS`.
+
 ## Enabling Checks
 
 The default "health" endpoint will test a simple `SELECT 1` query on the database. Additional checks can be enabled in your Django settings.
@@ -73,6 +76,62 @@ ALIVE_CHECKS = {
 }
 
 ```
+
+### Built-in Checks
+
+Defined in `django_alive.checks`.
+
+```python
+def check_cache(key="django-alive", cache="default")
+```
+
+Fetch a cache key against the specified cache.
+
+#### Parameters:
+
+- `key` (`str`):  Cache key to fetch (does not need to exist)
+- `cache` (`str`):  Cache alias to execute against
+
+---
+
+```python
+def check_database(query="SELECT 1", database="default")
+```
+
+Run a SQL query against the specified database.
+
+#### Parameters:
+
+- `query` (`str`):  SQL to execute
+- `database` (`str`):  Database alias to execute against
+
+---
+
+```python
+def check_migrations(alias=None)
+```
+
+Verify all defined migrations have been applied
+
+#### Parameters:
+
+- `alias` (`str`):  An optional database alias (default: check all defined databases)
+
+---
+
+```python
+def check_staticfile(filename)
+```
+
+Verify a static file is reachable
+
+#### Parameters:
+
+- `filename` (`str`):  static file to verify
+
+## Management Command
+
+In addition to the view, the configured healthchecks can also be run via a management command with `manage.py healthcheck`. This will exit with an error code if all the healthchecks do not pass.
 
 ## Custom Checks
 
