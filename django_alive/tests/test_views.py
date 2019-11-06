@@ -11,6 +11,7 @@ try:
 except ImportError:
     from mock import patch
 
+
 class ViewTestCase(TestCase):
     def test_liveness(self):
         response = self.client.get(reverse("alive_alive"))

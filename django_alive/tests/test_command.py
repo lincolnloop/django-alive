@@ -10,6 +10,7 @@ try:
 except ImportError:
     from mock import patch
 
+
 class CommandTestCase(TestCase):
     def test_command(self):
         out = StringIO()
@@ -20,7 +21,7 @@ class CommandTestCase(TestCase):
         err_msg = "database failed"
         out = StringIO()
         with patch(
-                "django_alive.checks.check_database", side_effect=bad_database_check
+            "django_alive.checks.check_database", side_effect=bad_database_check
         ):
             with self.assertRaises(CommandError):
                 call_command("healthcheck")
