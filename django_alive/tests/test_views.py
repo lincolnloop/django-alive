@@ -3,7 +3,7 @@ import json
 from django.test import TestCase
 from django.urls import reverse
 
-from .. import checks
+from .side_effects import ERR_MSG, bad_database_check
 
 try:
     from unittest.mock import patch
@@ -23,10 +23,6 @@ class ViewTestCase(TestCase):
         self.assertEqual(json.loads(response.content.decode("utf8")), {"healthy": True})
 
     def test_healtcheck_failed(self):
-        err_msg = "database failed"
-
-        def bad_database_check(*args, **kwargs):
-            raise checks.HealthcheckFailure(err_msg)
 
         with patch(
             "django_alive.checks.check_database", side_effect=bad_database_check
@@ -35,5 +31,5 @@ class ViewTestCase(TestCase):
         self.assertEqual(response.status_code, 503)
         self.assertEqual(
             json.loads(response.content.decode("utf8")),
-            {"healthy": False, "errors": [err_msg]},
+            {"healthy": False, "errors": [ERR_MSG]},
         )

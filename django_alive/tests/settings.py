@@ -5,6 +5,7 @@ try:
 except ImportError:
     from django.conf.urls import include, url as re_path
 
+INSTALLED_APPS = ["django_alive"]
 CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
 ROOT_URLCONF = "django_alive.tests.settings"

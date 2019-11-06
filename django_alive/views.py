@@ -1,10 +1,8 @@
 import logging
 
 from django.http import HttpResponse, JsonResponse
-from django.utils.module_loading import import_string
 
-from . import HealthcheckFailure
-from .settings import ALIVE_CHECKS
+from .utils import perform_healthchecks
 
 log = logging.getLogger(__name__)
 
@@ -15,13 +13,12 @@ def alive(request):
 
 def healthcheck(request):
     # Verify DB is connected
-    errors = []
-    for func, kwargs in ALIVE_CHECKS.items():
-        try:
-            import_string(func)(**kwargs)
-        except HealthcheckFailure as e:
-            errors.append(str(e))
-    if errors:
-        return JsonResponse({"healthy": False, "errors": errors}, status=503)
+    healthy, errors = perform_healthchecks()
+    response = {"healthy": healthy}
+    if healthy:
+        status = 200
+    else:
+        status = 503
+        response.update({"errors": errors})
 
-    return JsonResponse({"healthy": True})
+    return JsonResponse(response, status=status)
