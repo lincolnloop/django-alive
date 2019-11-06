@@ -3,7 +3,7 @@ import sys
 from django.core.management import CommandError, call_command
 from django.test import TestCase
 
-from .side_effects import ERR_MSG, bad_database_check
+from .side_effects import bad_database_check
 
 try:
     from unittest.mock import patch
@@ -24,8 +24,6 @@ class CommandTestCase(TestCase):
         self.assertIn("OK", out.getvalue())
 
     def test_command_failed(self):
-        err_msg = "database failed"
-        out = StringIO()
         with patch(
             "django_alive.checks.check_database", side_effect=bad_database_check
         ):
