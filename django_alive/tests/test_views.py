@@ -1,10 +1,9 @@
-from io import StringIO
 import json
 
 from django.test import TestCase
 from django.urls import reverse
 
-from .side_effects import bad_database_check, ERR_MSG
+from .side_effects import ERR_MSG, bad_database_check
 
 try:
     from unittest.mock import patch
