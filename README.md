@@ -1,6 +1,6 @@
 # django-alive 🕺
 
-[![tests](https://img.shields.io/travis/lincolnloop/django-alive/master.svg)](https://travis-ci.org/lincolnloop/django-alive)
+[![tests](https://github.com/lincolnloop/django-alive/actions/workflows/tox.yml/badge.svg)](https://github.com/lincolnloop/django-alive/actions/workflows/tox.yml)
 [![coverage](https://img.shields.io/codacy/coverage/5d539d4956a44f55aec632f3a43ee6c1.svg)](https://app.codacy.com/project/ipmb/django-alive/dashboard)
 [![PyPI](https://img.shields.io/pypi/v/django-alive.svg)](https://pypi.org/project/django-alive/)
 ![Python Versions](https://img.shields.io/pypi/pyversions/django-alive.svg)
