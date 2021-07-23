@@ -1,4 +1,4 @@
-1.1.1 (unreleased)
+1.2.0 (2021-07-23)
 ------------------
 
 * Updated test matrix. Python 2 no longer "officially" supported.
