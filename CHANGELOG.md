@@ -1,4 +1,4 @@
-1.2.1 (unreleased)
+1.2.1 (2021-07-23)
 ------------------
 
 * Update PyPI metadata
