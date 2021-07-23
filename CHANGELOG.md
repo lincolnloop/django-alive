@@ -1,7 +1,8 @@
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+* Updated test matrix. Python 2 no longer "officially" supported.
+* Prevent Traceback in middleware if URLs are not setup
 
 
 1.1.0 (2019-11-06)
