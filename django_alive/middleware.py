@@ -1,8 +1,16 @@
-from django.urls import reverse
+import logging
+
+from django.urls import NoReverseMatch, reverse
+
+log = logging.getLogger(__name__)
 
 
 def healthcheck_bypass_host_check(get_response):
-    healthcheck_urls = [reverse("alive_alive"), reverse("alive_health")]
+    try:
+        healthcheck_urls = [reverse("alive_alive"), reverse("alive_health")]
+    except NoReverseMatch:
+        log.warning("django-alive URLs have not been added to urlconf")
+        healthcheck_urls = []
 
     def middleware(request):
         if request.path in healthcheck_urls:
