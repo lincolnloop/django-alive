@@ -129,6 +129,16 @@ Verify a static file is reachable
 
 - `filename` (`str`):  static file to verify
 
+---
+
+```python
+def check_elasticsearch(settings)
+```
+
+- `settings` (`dict`):  Parameter that will be passed to Elasticsearch()
+
+Ping ElasticSearch to check it is alive. Needs `elasticsearch` package to be installed.
+
 ## Management Command
 
 In addition to the view, the configured healthchecks can also be run via a management command with `manage.py healthcheck`. This will exit with an error code if all the healthchecks do not pass.
