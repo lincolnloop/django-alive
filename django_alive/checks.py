@@ -63,6 +63,25 @@ def check_cache(key="django-alive", cache="default"):
         raise HealthcheckFailure("cache error")
 
 
+def check_elasticsearch(settings={}):
+    # type: (dict) -> None
+    """
+    Ping the Elasticsearch server to verify it's reachable
+
+    :param dict settings: Elasticsearch settings
+    :return None:
+    """
+    try:
+        from elasticsearch import Elasticsearch
+        ping = Elasticsearch(settings).ping()
+    except Exception:
+        log.exception("elasticsearch connection failed")
+        raise HealthcheckFailure("elasticsearch exception")
+    if not ping:
+        log.error("elasticsearch ping failed")
+        raise HealthcheckFailure("elasticsearch error")
+
+
 def check_migrations(alias=None):
     # type: (Optional[str]) -> None
     """
