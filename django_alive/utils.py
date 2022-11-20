@@ -17,7 +17,11 @@ ALIVE_CHECKS = getattr(settings, "ALIVE_CHECKS", DEFAULT_ALIVE_CHECKS)
 def perform_healthchecks():
     # typing: () -> (bool, List[str])
     errors = []
-    for func, kwargs in ALIVE_CHECKS.items():
+    if isinstance(ALIVE_CHECKS, dict):
+        checks = ALIVE_CHECKS.items()
+    else:
+        checks = ALIVE_CHECKS
+    for func, kwargs in checks:
         try:
             import_string(func)(**kwargs)
         except HealthcheckFailure as e:

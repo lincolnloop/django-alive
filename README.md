@@ -77,6 +77,23 @@ ALIVE_CHECKS = {
 
 ```
 
+If you want to perform one test multiple times with different parameters (or influence order of their execution) you can also use set or array of tuples:
+
+```python
+ALIVE_CHECKS = [
+    ("django_alive.checks.check_database", {}),
+    ("django_alive.checks.check_staticfile", {
+        "filename": "img/favicon.ico",
+    }),
+    ("django_alive.checks.check_cache", {
+        "cache": "session",
+        "key": "test123",
+    }),
+    ("django_alive.checks.check_migrations", {}),
+]
+
+```
+
 ### Built-in Checks
 
 Defined in `django_alive.checks`.
