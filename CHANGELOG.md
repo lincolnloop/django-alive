@@ -1,7 +1,7 @@
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add GitHub Action for running tests against supported versions
 
 
 1.2.1 (2021-07-23)
