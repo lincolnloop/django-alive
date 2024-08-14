@@ -2,6 +2,7 @@
 ------------------
 
 - Add GitHub Action for running tests against supported versions
+- Release from GitHub Actions
 
 
 1.2.1 (2021-07-23)
