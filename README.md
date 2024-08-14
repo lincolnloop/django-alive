@@ -31,7 +31,7 @@ Verifies services are ready.
 
 By default the health endpoint will test the database connection, but can be configured to check the cache, staticfiles, or any additional custom checks.
 
-Supports Django 1.10+ on both Python 2 & 3.
+Supports Django 3.2+ on Python 3.6+.
 
 ## Install
 
@@ -47,11 +47,6 @@ Add this to your project's `urlpatterns`:
 path("-/", include("django_alive.urls"))
 ```
 
-For versions before Django 2.0, use:
-
-```python
-url(r"-/", include("django_alive.urls"))
-```
 
 If you wish to use the `healthcheck` [management command](#management-command), add
 `django_alive` to the `INSTALLED_APPS`.
