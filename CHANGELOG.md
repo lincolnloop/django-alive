@@ -1,4 +1,10 @@
-1.2.2 (unreleased)
+1.2.3 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+1.2.2 (2024-08-14)
 ------------------
 
 - Add GitHub Action for running tests against supported versions
