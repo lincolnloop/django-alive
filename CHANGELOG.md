@@ -1,7 +1,7 @@
 2.0.0 (2024-08-30)
 ------------------
 
-- Allow executing checks multiple times with different parameters; `ALIVE_CHECKS` should now be a list of tuples.
+- Allow executing checks multiple times with different parameters; `ALIVE_CHECKS` should now be a list of tuples (setting it to a dictionary results in a deprecation warning).
 
 
 1.2.2 (2024-08-14)
