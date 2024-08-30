@@ -1,7 +1,7 @@
-1.2.3 (unreleased)
+1.2.3 (2024-08-30)
 ------------------
 
-- Nothing changed yet.
+- Allow executing checks multiple times with different parameters; `ALIVE_CHECKS` should now be a list of tuples.
 
 
 1.2.2 (2024-08-14)
