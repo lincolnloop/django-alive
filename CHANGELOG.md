@@ -1,4 +1,4 @@
-1.2.3 (2024-08-30)
+2.0.0 (2024-08-30)
 ------------------
 
 - Allow executing checks multiple times with different parameters; `ALIVE_CHECKS` should now be a list of tuples.
