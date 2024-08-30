@@ -55,22 +55,26 @@ If you wish to use the `healthcheck` [management command](#management-command), 
 
 The default "health" endpoint will test a simple `SELECT 1` query on the database. Additional checks can be enabled in your Django settings.
 
-Use the `ALIVE_CHECKS` setting to configure the checks to include. It is a dictionary with the path to a Python function as a key and any keyword arguments to pass to that function as a value. A full example:
+Use the `ALIVE_CHECKS` setting to configure the checks to include. It is a list of tuples with the path to a Python function as a first argiment and dict of keyword arguments to pass to that function as a second argument. A full example:
 
 ```python
-ALIVE_CHECKS = {
-    "django_alive.checks.check_database": {},
-    "django_alive.checks.check_staticfile": {
+ALIVE_CHECKS = [
+    ("django_alive.checks.check_database", {}),
+    ("django_alive.checks.check_staticfile", {
         "filename": "img/favicon.ico",
-    },
-    "django_alive.checks.check_cache": {
+    }),
+    ("django_alive.checks.check_cache", {
         "cache": "session",
         "key": "test123",
-    },
-    "django_alive.checks.check_migrations": {},
-}
-
+    }),
+    ("django_alive.checks.check_migrations", {}),
+]
 ```
+
+**⚠️ Warning: Changed in version 1.3.0 ⚠️**
+
+**NOTE:** Old settings with `ALIVE_CHECKS` as dict was deprecated in favor of a list of tuples.
+
 
 ### Built-in Checks
 

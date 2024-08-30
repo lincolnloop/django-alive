@@ -1,6 +1,6 @@
 import json
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from .side_effects import ERR_MSG, bad_database_check
@@ -19,6 +19,13 @@ class ViewTestCase(TestCase):
 
     def test_healthcheck(self):
         response = self.client.get(reverse("alive_health"))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.content.decode("utf8")), {"healthy": True})
+
+    @override_settings(ALIVE_CHECKS={"django_alive.checks.check_migrations": {}})
+    def test_deprecated_dict_format(self):
+        with self.assertWarns(DeprecationWarning):
+            response = self.client.get(reverse("alive_health"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content.decode("utf8")), {"healthy": True})
 
