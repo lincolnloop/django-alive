@@ -47,6 +47,19 @@ Add this to your project's `urlpatterns`:
 path("-/", include("django_alive.urls"))
 ```
 
+If you're using Django's [`LoginRequiredMiddleware`](https://docs.djangoproject.com/en/dev/ref/middleware/#django.contrib.auth.middleware.LoginRequiredMiddleware), you'll may want to wrap the healthchecks so they are not protected by the login requirement. You can do this by adding the following to your `urls.py`:
+
+```python
+from django.contrib.auth.decorators import login_not_required
+
+from django_alive.views import alive, health
+
+urlpatterns = [
+    path("-/alive/", login_not_required(alive)),
+    path("-/health/", login_not_required(health)),
+    # ...
+]
+```
 
 If you wish to use the `healthcheck` [management command](#management-command), add
 `django_alive` to the `INSTALLED_APPS`.
