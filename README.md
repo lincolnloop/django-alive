@@ -52,11 +52,11 @@ If you're using Django's [`LoginRequiredMiddleware`](https://docs.djangoproject.
 ```python
 from django.contrib.auth.decorators import login_not_required
 
-from django_alive.views import alive, health
+from django_alive.views import alive, healthcheck
 
 urlpatterns = [
     path("-/alive/", login_not_required(alive)),
-    path("-/health/", login_not_required(health)),
+    path("-/health/", login_not_required(healthcheck)),
     # ...
 ]
 ```
